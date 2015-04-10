@@ -8,12 +8,16 @@ def tidy_html(html):
     html5, errors = tidy_document(html, options={
         'merge-divs': 0,       # do not merge nested div elements - preserve semantic block structures
         'output-xml': 0,
-        'indent': 1,
+        'indent': 0,
         'tidy-mark': 0,
         'wrap': 0,
         'alt-text': '',
         'doctype': 'html5',
-        'markup': 1
+        'markup': 1,
+        'drop-empty-elements': 'no',
+        'char-encoding': 'utf8',
+        'input-encoding': 'utf8',
+        'output-encoding': 'utf8'
     })
     return html5
 

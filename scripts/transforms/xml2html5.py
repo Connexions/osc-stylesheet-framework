@@ -26,7 +26,11 @@ def transform_cnxml(cnxml_file):
   """ Given a cnxml file (index.cnxml or index_auto_generated.cnxml) this returns an HTML
       version of it.
   """
-  return None
+  xml = etree.parse(cnxml_file)
+  xslt = makeXsl('cnxml-to-html5.xsl')
+  xhtml = xslt(xml)
+  print(xslt.error_log)
+  return xhtml
 
 def transform_collection(collection_dir):
   """ Given an unzipped collection generate a giant HTML file representing
@@ -39,6 +43,25 @@ def transform_collection(collection_dir):
     sys.exit(2)
   collxml_file = open(collxml_file_path)
   collxml_html = transform_collxml(collxml_file)
+
+  for node in etree.XPath('//a[@class="xinclude"]')(collxml_html):
+    module = node.attrib['href']
+    module_dir = os.path.join(collection_dir, module)
+    module_path = os.path.join(module_dir, 'index_auto_generated.cnxml')
+    if not os.path.exists(module_path):
+      module_path = os.path.join(module_dir, 'index.cnxml')
+    if not os.path.exists(module_path):
+      continue
+
+    module_file = open(module_path)
+    module_html = transform_cnxml(module_file)
+
+    module_body = etree.XPath('//body')(module_html)
+
+    #node.getparent().replace(node, module_body[0])
+    for elem in module_body[0].__reversed__():
+      node.addnext(elem)
+    node.getparent().remove(node);
 
   return collxml_html
 

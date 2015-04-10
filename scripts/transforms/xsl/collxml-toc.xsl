@@ -77,7 +77,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <a href="#{@id}" class="{$toc-class}"><xsl:value-of select="./h1" /></a>
+    <a href="#{@id}" class="{$toc-class}"><xsl:value-of select="./h1/span[@class='title-text']" /></a>
   </xsl:template>
 
   <!-- It's Tricky...it's Tricky (Tricky) Tricky (Tricky) -->

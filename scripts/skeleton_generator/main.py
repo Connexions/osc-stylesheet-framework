@@ -73,5 +73,3 @@ if __name__ == '__main__':
     # Generate nestings for each content type.
     for content_type in content_modules:
         generate_nesting(content_type)
-
-# mixin_token, selector_token, context_token

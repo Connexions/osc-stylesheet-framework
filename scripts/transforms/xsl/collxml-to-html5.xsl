@@ -14,17 +14,17 @@
   <xsl:output method="html" doctype-system="about:legacy-compat" indent="yes" omit-xml-declaration="yes" />
 
   <xsl:include href="utils.xsl"/>
-  <xsl:include href="cnxml-to-html5.xsl"/>
 
   <!-- Begin processing with the collection node -->
   <xsl:template match="col:collection">
     <html>
       <head>
         <title><xsl:value-of select="col:metadata/md:title"/></title>
+        <meta charset="UTF-8" />
       </head>
       <body data-type="book">
         <div class="front-matter">
-          <header data-type="titlepage">
+          <header class="titlepage">
             <xsl:apply-templates select="col:metadata/md:title"/>
             <xsl:apply-templates select="col:metadata/md:actors"/>
             <xsl:apply-templates select="col:metadata/md:content-url"/>
@@ -95,12 +95,55 @@
   </xsl:template>
 
   <xsl:template match="md:title">
-    <h1><xsl:apply-templates select="node()"/></h1>
+    <h1 class="title">
+      <xsl:apply-templates select="@*" />
+      <span class="title-label"><xsl:call-template name="prevent.self.closure"/></span>
+      <span class="title-number"><xsl:call-template name="prevent.self.closure"/></span>
+      <span class="title-divider"><xsl:call-template name="prevent.self.closure"/></span>
+      <span class="title-text"><xsl:apply-templates select="node()"/></span>
+    </h1>
   </xsl:template>
 
   <!-- Stub for included modules which gets replaced with the
        module's xml tree in a second pass of the collection tree. -->
   <xsl:template name="cnx.xinclude.module">
-    <a class="xinclude" href="{@document}.html"><xsl:value-of select="md:title/text()"/></a>
+    <a class="xinclude" href="{@document}"><xsl:value-of select="md:title/text()"/></a>
   </xsl:template>
+
+  <xsl:template match="col:metadata/md:title">
+    <h1>
+      <xsl:value-of select="."/>
+    </h1>
+  </xsl:template>
+
+  <xsl:template match="col:metadata/md:actors">
+    <p>
+      <span class="editor"><xsl:value-of select="md:person[1]/md:fullname"/></span>
+    </p>
+    <p>
+      <span class="authors"></span>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="col:metadata/md:content-url">
+    <xsl:variable name="href">
+      <xsl:value-of select="."/>
+    </xsl:variable>
+    <p>
+      <span class="content-url">&lt;<a href="{$href}" rel="alternate"><xsl:value-of select="$href"/></a>&gt;</span>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="col:metadata/md:license">
+  </xsl:template>
+
+  <xsl:template match="col:metadata/md:revised">
+  </xsl:template>
+
+  <xsl:template match="col:metadata/md:abstract">
+    <div data-type="abstract">
+      <xsl:apply-templates select="@*|node()"/>
+    </div>
+  </xsl:template>
+
 </xsl:stylesheet>
