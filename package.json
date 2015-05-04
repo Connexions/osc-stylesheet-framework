@@ -1,0 +1,10 @@
+{
+  "name": "osc-stylesheets",
+  "version": "0.1.0",
+  "devDependencies": {
+    "coffee-script": "^1.9.2",
+    "gulp": "*",
+    "gulp-rename": "^1.2.2",
+    "gulp-run": "^1.6.7",
+  }
+}

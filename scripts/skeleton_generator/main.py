@@ -7,6 +7,28 @@ max_depth = 3
 
 content_modules = {}
 
+def generate_title(selector_context, slot_context, title_container):
+    title_slot_context = slot_context + '; title'
+    print """
+%(selector_context)s %(title_container)s {
+  .title(%(slot_context)s);
+
+  span.title-label {
+    .label(%(title_slot_context)s);
+  }
+  span.title-number {
+    .number(%(title_slot_context)s);
+  }
+  span.title-divider {
+    .divider(%(title_slot_context)s);
+  }
+  span.title-text {
+    .wording(%(title_slot_context)s);
+    .wordage(%(title_slot_context)s);
+  }
+}
+""" % {'selector_context': selector_context, 'slot_context': slot_context, 'title_slot_context': title_slot_context, 'title_container': title_container}
+
 def generate_nesting(type, depth=1, selector_context='', slot_context=''):
     # Don't nest root types.
     has_parent = getattr(content_modules[type], 'has_parent', True)
@@ -31,6 +53,10 @@ def generate_nesting(type, depth=1, selector_context='', slot_context=''):
 }""" % {'selector': current_selector_context,
         'mixin': content_modules[type].slot_name,
         'context': slot_context}
+
+    if getattr(content_modules[type], 'has_title', False):
+        title_container  = getattr(content_modules[type], 'title_container', 'h1.title')
+        generate_title(current_selector_context, next_slot_context, title_container)
 
     # Stop at a max depth.
     if depth >= max_depth:
