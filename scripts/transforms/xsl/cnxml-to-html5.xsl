@@ -152,10 +152,10 @@
   <xsl:template match="c:title[ancestor::c:content]">
     <h1 class="title">
       <xsl:apply-templates select="@*" />
-      <span class="title-label"></span>
-      <span class="title-number"></span>
-      <span class="title-divider"></span>
-      <span class="title-text"><xsl:apply-templates select="node()" /></span>
+      <span class="label"></span>
+      <span class="number"></span>
+      <span class="divider"></span>
+      <span class="wording"><xsl:apply-templates select="node()" /></span>
     </h1>
   </xsl:template>
 

@@ -1,1036 +1,1474 @@
-// Copyright (c) 2013 Rice University
-// This software is subject to the provisions of the GNU AFFERO GENERAL PUBLIC LICENSE Version 3.0 (AGPL).
-// See LICENSE.txt for details.
-
-
-// complete list of all the slots. All these are empty, to be defined locally at the theme level.
-
-
-#index {
-  .style(...) {
-    #utils>#pb>.before(always);
-    #utils>#pb>.after(always);
-    #utils>#pb>.inside(auto);
-
-  }
-  #title {
-    .style(...) {
-
-    }
-  }
-  .letter(...) {
-
-  }
-  .term(...) {
-  }
-  .link(...) {
-  }
-}
-
-#part {
-  #title {
-    .style(...) {
-
-    }
-    .number(...) {
-
-    }
-  }
-
-  #toc {
-    .style(...) {
-    }
-    #title {
-      .style(...) {
-        #utils>#pb>.after(avoid);
-
-      }
-    }
 
-    #entry {
-
-      .title(@scope) {}
-      .title(default) {
-
-      }
-      .title(top) {
-        // TOC Units/Chapter
-
-      }
-      .title(section) {
-        // Sections
-
-      }
-      .page() {
-
-      }
-    }
-
-    // Possible values for @scope:
-    // - X default
-    // - X top
-    // - X unit
-    // - preface
-    // - X chapter
-    // - appendix
-    // - section
-    .show-sections-in(@scope)   {} // By default show sections in all scopes
-    .show-sections-in(preface)  {  }
-    .show-sections-in(appendix) {  }
-    .show-sections-in(section)  { }
-
-  }
-
-  #preface {
-    .style(...) {}
-
-    // How does this fit into #title> namespaces?
-    #titlepage {
-      .style(...) {
-      }
-      .title(...) {
-
-      }
-    }
-  }
-
-  #introduction {
-    #title {
-      .style(...) {}
-      .style(chapter) {
-
-      }
-    }
-    #splash-figure {
-      .image(...) {}
-      .image(chapter) {
-
-      }
-    }
-    #chapter-outline {
-      .style(...) {
-
-      }
-      #title {
-        .style(...) {
-
-        }
-        .content(...) {
-
-        }
-      }
-      .children(...) {
-
-      }
-      #entry {
-        .style(...) {
-
-        }
-        #title {
-          .style(...) {
-
-          }
-        }
-        .children-indent(...) {
-
-        }
-        // This next line is deprecated and should be moved elsewhere
-        .d-section-colon(...) {
-
-        }
-
-        // Each Chapter ToC entry contains the abstract in addition to the title
-        #abstract {
-          .style(...) {
-
-          }
-          .list(...) {
-
-          }
-          .list-item(...) {
-
-          }
-        }
-      }
-    }
-  }
-
-  #chapter {
-    .style(...) {}
-    #title {
-      .style(...) {}
-      .label(...) {}   // "Chapter"
-      .number(...) {}  // "1"
-      .divider(...) {} // "|"
-      .text(...) {}    // "Introduction to Psychology"
-    }
-    #learning-objectives {
-      .style(...) {
-
-        #utils>#pb>.inside(avoid);
-        #utils>#pb>.before(avoid);
-      }
-      #title {
-        .style(...) {
-        }
-      }
-      .list(...) {
-      }
-      .list-item(...) {
-
-      }
-    }
-  }
-
-  #glossary {
-    #title { .style(@part) { } }
-    .style(@part) { }
-    .list(@part) { }
-    .term(@part) { }
-    .term(chapter) {
-      float: left;
-      font-weight: bold;
-    }
-
-    .divider(@part) { }
-    .divider(chapter) {
-
-    }
-
-    .definition(@part) { }
-  }
-
-
-  // End-of-chapter parts
-  #chapter-end { // .cnx-eoc
-    .style(...) {
-    }
-    #title {
-      .style(...) {
-
-      }
-    }
-    #section {
-      #title {
-        .style(...) {
-
-        }
-      }
-    }
-    #summary {
-      .style(...) {}
-      #title {
-        .style(...) {}
-        .link(...) {}
-      }
-    }
-  }
-
-  // End-of-book parts
-  #book-end {
-    .style(...) {}
-  }
-}
-
-.cnx-indentation(@indent: 0) {
-
-}
-
-.cnx-indentation-base() {
-  p,
-  p:nth-of-type(1),
-  p:nth-of-type(2),
-  .note p,
-  .notes p,
-  .references p,
-  .cnx-eoc p,
-  .body p {
-    .cnx-indentation;
-  }
-}
-
-#page {
-  .style() {}
-  .style('introduction') {}
-  .footnotes() {}
-  .top-left-corner(left) {}
-  .top-left-corner(right) {}
-  .top-right-corner(left) {}
-  .top-right-corner(right) {}
-  .bottom-left-corner(left) {}
-  .bottom-left-corner(right) {}
-  .bottom-right-corner(left) {}
-  .bottom-right-corner(right) {}
-  .top-left(left) {}
-  .top-left(right) {}
-  .top-center(left) {}
-  .top-center(right) {}
-  .top-right(left) {}
-  .top-right(right) {}
-  .bottom-left(left) {}
-  .bottom-left(right) {}
-  .bottom-center(left) {}
-  .bottom-center(right) {}
-  .bottom-right(left) {}
-  .bottom-right(right) {}
-  .left-top(left) {}
-  .left-top(right) {}
-  .left-middle(left) {}
-  .left-middle(right) {}
-  .left-bottom(left) {}
-  .left-bottom(right) {}
-  .right-top(left) {}
-  .right-top(right) {}
-  .right-middle(left) {}
-  .right-middle(right) {}
-  .right-bottom(left) {}
-  .right-bottom(right) {}
-}
-// Copyright (c) 2013 Rice University
-// This software is subject to the provisions of the GNU AFFERO GENERAL PUBLIC LICENSE Version 3.0 (AGPL).
-// See LICENSE.txt for details.
-
-@cnx-string-preface: "Preface";
-@cnx-string-chapter: "Chapter";
-@cnx-string-appendix: "Appendix";
-@cnx-string-introduction: "Introduction";
-@cnx-string-chapter-outline: "Chapter Outline";
-@cnx-string-learning-objectives: "Learning Objectives";
-@cnx-string-key-equations: "Key Equations";
-@cnx-string-key-concepts: "Key Concepts";
-
-#part {
-  #titlepage {
-    #title {
-      .style() {}
-    }
-  }
-  #preface {
-    #titlepage {
-      .style(...) {
-
-      }
-      .title(...) {
-      }
-    }
-  }
-  #introduction {
-    #title {
-      .style(...) {
-
-      }
-    }
-    #chapter-outline {
-      .style(...) {}
-      #title {
-        .style(...) {
-        }
-      }
-      #entry {
-        #title {
-          .style(...) {
-          }
-        }
-      }
-    }
-  }
-
-  #toc {
-    .style(...) {
-    }
-    #title {
-      .style(...) {
-
-      }
-    }
-    #link {
-      .style(...) {
-
-      }
-    }
-  }
-  #chapter {
-    #title {
-      .style(...) {
-
-      }
-      .label(...) {}
-      .number(...) {
-
-      }
-      .divider(...) {
-
-      }
-      .text() { }
-    }
-
-    #learning-objectives {
-      .style(...) {
-
-      }
-      #title {
-        .style(...) { }
-      }
-      #list {
-        .style(){
-
-        }
-      }
-    }
-  }
-  #module {
-    #title {
-      .style() {
-
-      }
-      // Separate the section number and title with a pipe
-      .divider() {
-
-      }
-      .number() {}
-      .text() {}
-    }
-  }
-  #glossary {
-    .style(chapter) {
-
-    }
-    #title {
-      .style(chapter) {
-
-      }
-    }
-  }
-
-  // End-of-chapter parts
-  #chapter-end {
-    .style(...) {
-
-    }
-    #title {
-      .style(...) {
-
-      }
-    }
-    #summary {
-      .style(...) {
-        .x-column-count(1);
-      }
-      #title {
-        .style(...) {
-
-        }
-        .link(...) {
-
-        }
-      }
-    }
-    #key-equations {
-      .style(...) {
-        .x-column-count(1);
-      }
-      #title {
-        .style(...) {
-
-        }
-      }
-    }
-    #key-concepts {
-      .style(...) {
-        .x-column-count(1);
-      }
-      #title {
-        .style(...) {
-
-        }
-        .link(...) {
-
-        }
-        // targeting the link with layout changes not a good idea.  Must have a way to
-        // target the parent of the link (.section > .title )  See line #208 precalculus-skeleton
-        .subtitle(...) {
-
-        }
-      }
-    }
-    #review-exercises {
-      .style(...) {
-        .x-column-count(1);
-      }
-      #title {
-        .style(...) {
-
-        }
-      }
-    }
-    #practice-test {
-      .style(...) {
-        .x-column-count(1);
-      }
-      #title {
-        .style(...) {
-
-        }
-      }
-    }
-    #solution {
-      .style(...) {
-
-      }
-      #title {
-        .style() {}
-        .link(...) {
-
-        }
-      }
-    }
-  }
-  // End-of-book parts
-  #book-end {
-    .style(...) {}
-
-    // End of Book Solutions
-    #end-of-book-solutions {
-      .style(...) {
-
-      }
-
-      #title {
-        .style() {
-
-        }
-        .x-solutions-subheading-style() {
-
-        }
-        .style('chapter-area') {
-          .x-solutions-subheading-style();
-        }
-        .style('review-exercises') {
-          .x-solutions-subheading-style();
-
-        }
-        .style('practice-test') {
-          .x-solutions-subheading-style();
-
-        }
-        .style('try-it') {
-          .x-solutions-subheading-style();
-
-        }
-        .style('section-exercises') {
-          .x-solutions-subheading-style();
-
-        }
-      }
-      #solution {
-        .style(...) {
-          // The Answer Key for the PreCalculus text was converted to be in (1) one column
-          // and not inline due to the fact that some answers will be cartesian graphs (art).
-          // Not a good experience to be inline.
-          .x-column-count(1);
-        }
-        #title {
-          .style(...) {
-
-            a.solution {
-
-            }
-          }
-        }
-      }
-    }
-
-    // End of Book References
-    #end-of-book-references {
-      .style(...) {  }
-
-      #title {
-        .style(...) { //colophon titles are passed as h1's by default by docbook override properties here
-
-        }
-      }
-
-      #chapter-area {
-        .style(...) {
-
-        }
-        #title {
-          .style(...) {}
-        }
-      }
-      #section-area {
-        .style(...) {}
-        #title {
-          .style(...) {  } // Remove references title and superscript
-        }
-      }
-      #reference {
-        .style(...) {}
-        #title {
-          .style(...) {}
-        }
-      }
-    }
-
-    // End of Book Index
-    #index {
-      .style(...) {
-      }
-
-      #title {
-        .style(...) {
-        }
-      }
-      .letter(...) {
-      }
-      .term(...) {
-      }
-      .link(...) {
-      }
-    }
-    // End of Book Attribution and About Connexions
-    #colophon {
-      .style(...) {
-      }
-    }
-
-    #appendix {
-      #title {
-        .style() {
-        }
-        .number() {
-        }
-        .text() {
-        }
-        .divider() {
-
-        }
-        .label() {}
-      }
-    }
-  }
-}
-#content {
-#footnote {
-  .style(){}
-}
-
-#equation{
-  .style(){}
-  .label(){}
-
-}
-  #body {
-    .style(any) {
-
-    }
-  }
-  #paragraph {
-    .style(any) {
-
-    }
-    .style(any; any; list; table) {
-
-    }
-  }
-  #table {
-    .style(){}
-    .cell(){}
-    .caption(){}
-    .header(){}
-    .style(any; any) {
-    }
-    .style(any, any, commentary, exercise, example) {}
-    .style(any; any; problem; exercise; example) {
-
-    }
-    .style(any; any; solution; exercise; example) {
-
-    }
-
-    // Bug fix. Remove styling for tables in "Key Equations"
-    // as these are just a wrapper for alignment.
-    // !important is used to override inline table styles.
-    .style(any; chapter; chapter-end; key-equations) {
-
-    }
-    #caption {
-      .style(any; any) {
-
-      }
-      .style(any; any; problem; exercise; example) { }
-      .style(any; any; solution; exercise; example) { }
-      .style(any; any; commentary; exercise; example) { }
-
-      // Do not display numbering for tables in the answer key
-      .style(any; book-end; solution) { }
-    }
-    #head {
-      .style(any; any) {
-      }
-    }
-    #body {
-      .style(any; any) {
-      }
-    }
-    #row {
-      .style(any; any) {
-
-      }
-      .style(colored; any) {
-        height: 1em !important;
-      }
-    }
-    #header {
-      .style(any; any) {
-
-      }
-      .style(colored; any) {
-
-      }
-    }
-    #data {
-      .style(any; any) {
-
-      }
-
-      // Some TDs act like TH
-      .style('header'; any) {
-
-      }
-    }
-  }
-  #note {
-    .style(...) {}
-    .style(non-feature) {
-
-    }
-    .header(){}
-    .style(howto; ...) {
-
-      .x-feature(howto);
-
-    }
-    .style(qa; ...) {
-
-      .x-feature(qa);
-
-    }
-    .style(media; ...) {
-
-
-
-    }
-    .style(try; ...) {
-      #utils>#pb>.inside(avoid);
-
-    }
-    #title {
-      .style(...) {}
-      .style(non-feature) {
-
-      }
-      .style(@kind; @part; feature-try) {
-      }
-      .style(@kind; @part; feature-qa) {
-
-      }
-    }
-    #body {
-      .style(...) {}
-      .style(@kind; @part; feature-try) {
-      }
-      .style(@kind; @part; feature-qa) {
-      }
-    }
-  }
-  #figure {
-    .style(...) {
-    }
-    .style('splash'; chapter){}
-    .style(any; any; problem; exercise; example) {
-
-    }
-    .style(any; any; solution; exercise; example) {
-
-    }
-    .style(any; any; commentary; exercise; example) {
-
-    }
-    .style(@kind; @part; problem; exercise; section-exercise) {
-
-    }
-    .style(any; chapter-end; exercise) {
-
-    }
-    #body {
-      .style(any; any) {}
-    }
-    #title {
-      .style(...) {
-
-      }
-      .style(any; any; feature-qa) {
-
-      }
-      .number(any; any; solution; exercise; example) {
-
-      }
-      .number(any; any; problem; exercise; example) {
-
-      }
-      .number(any; any; commentary; exercise; example) {
-
-      }
-      .number(...) {
-
-      }
-    }
-  }
-  #image {
-    .style(any; any) {
-
-    }
-    .style(@kind; @part; figure) {
-
-    }
-    .style(any; book-end; solution) {
-
-    }
-  }
-  #section {
-    .style(any; any) {}
-    .style(any; any; section) {}
-    .style(section-exercises; @part; ...) {
-
-      //counter-reset: exercise;
-    }
-    .style(any; appendix) {}
-    #title {
-      .style(...) {
-
-      }
-      .style(any; preface) {}
-      .style(any; preface; section) {}
-      .style(any; appendix){
-        #part>#module>#title>.style();
-      }
-      .number(any; appendix) {
-        #part>#module>#title>.number();
-      }
-      .text(any; appendix) {
-        #part>#module>#title>.text();
-      }
-      .label(any; appendix) {}
-      .style(any; appendix; section) {}
-      .number(any; appendix; section) {}
-      .text(any; appendix; section) {}
-      .label(any; appendix; section) {}
-      .style(any; any) { // Section titles
-
-      }
-      .style(any; any; section) { // Sub-section titles
-
-      }
-      .style(section-exercises; @part; ...) {
-
-      }
-    }
-  }
-  #list {
-    .style(howto){}
-    .style(media){}
-    .style(any; any) {
-
-    }
-    .style(any; try) {
-
-    }
-    .style(any; any; solution; exercise; example) {
-
-    }
-    .style(any; any; problem; exercise) {
-
-    }
-    .style(any; any; table) {
-
-    }
-    .style('no-mark'; any) {
-
-    }
-    .item(@kind; @part; feature-media) {
-
-    }
-  }
-  #commentary {
-    #title {
-      .style(@kind; @part; exercise; example) {
-      }
-    }
-  }
-  #example {
-    .style(){}
-    .style(any) {
-
-    }
-    #title {
-      .style(any) {
-
-      }
-    }
-    #body {
-      .style(any) {
-
-      }
-    }
-  }
-  #exercise {
-    .style(...) {
-
-    }
-    .style(any; any; example) {
-
-    }
-    .style(@kind; @part; feature-try) {
-
-    }
-    .style(@kind; @part; section) {
-
-    }
-    .style(@kind; @part; section-exercise) { // end of section exercises
-
-    }
-    #title {
-      .style(@kind; @part; feature-try) {
-
-      }
-      .style(@kind; @part; section-exercise) {
-
-      }
-    }
-  }
-  #problem {
-    .style(@kind; @part; feature-try; exercise) {
-
-    }
-    .number(@kind; chapter-end; ...) {
-
-    }
-    #title {
-      .style(any; any; exercise; example) {
-      }
-    }
-    #body {
-      .style(@kind; @part; feature-try; exercise) {
-
-      }
-    }
-  }
-  #solution {
-    .style(...) {}
-
-    .style(any; any; example) {
-
-    }
-
-    .style(@kind; @part; feature-try; exercise) {
-;
-    }
-    .style(@kind; book-end) {
-
-    }
-    .style(@kind; @part; exercise; section-exercise) {
-
-    }
-
-    .style(@kind; chapter) {
-
-    }
-
-    #title {
-      .style(...) {}
-      .style(any; any; exercise; example) {
-
-      }
-      .style(@kind; book-end) {
-
-
-        // Solution in Answer Key needs to have period after number.
-        &::after {
-
-        }
-      }
-
-      .link(...) {}
-    }
-    #body {
-      .style(...) {}
-
-      .style(any; any; exercise; example) {
-
-      }
-
-      .style(@kind, book-end) {
-
-
-        // will need to change - include in .body mixin for now
-        > a.target-figure {
-;
-        } //add margin for .xref in solution body
-      }
-    }
-  }
-  // Blockquote is actually not used in PreCalculus, so no
-  // skeleton entry is needed.  I think this style is just
-  // garden variety blockquote. Will leave as is and place
-  // Psych and History blockquote styles into appropriate slots.
-  #blockquote {
-    .style(...) {
-
-
-      &::before, &::after {
-
-      }
-
-      &::before { }
-      &::after {}
-    }
-  }
-  #glossary {
-    .style(...) {
-
-
-      &::before {
-
-      }
-    }
-    #title {
-      .style(...) {
-      }
-    }
-    .dt() { }
-
-    .dl() {
-
-    }
-
-    .divider(...) {
-
-    }
-  }
-  #heading{
-    .style(h5, ...) {
-
-    }
-    .style(h6, ...) {
-
-    }
-  }
-  // Parent level link styling
-  #link {
-    .style(...) {
-
-    }
-  }
-}
+  .chapter() {}
 
+
+  .list(chapter; list, 'unordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .image(chapter; list, 'unordered'; list, 'unordered'; table) {}
+
+
+  .list(chapter; list, 'unordered'; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .table(chapter; list, 'unordered'; list, 'unordered'; table) {}
+
+
+  .image(chapter; list, 'unordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'unordered'; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .image(chapter; list, 'unordered'; list, 'ordered'; table) {}
+
+
+  .list(chapter; list, 'unordered'; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .table(chapter; list, 'unordered'; list, 'ordered'; table) {}
+
+
+  .table(chapter; list, 'unordered') {}
+
+
+  .list(chapter; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .list(chapter; list, 'unordered'; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .list(chapter; list, 'unordered'; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .image(chapter; list, 'unordered'; table) {}
+
+
+  .list(chapter; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .list(chapter; list, 'unordered'; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .list(chapter; list, 'unordered'; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .table(chapter; list, 'unordered'; table) {}
+
+
+  .list(chapter; list, 'unordered'; table; table; list, 'unordered') {}
+
+
+  .image(chapter; list, 'unordered'; table; table) {}
+
+
+  .list(chapter; list, 'unordered'; table; table; list, 'ordered') {}
+
+
+  .table(chapter; list, 'unordered'; table; table) {}
+
+
+  .image(chapter) {}
+
+
+  .list(chapter; list, 'ordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .image(chapter; list, 'ordered'; list, 'unordered'; table) {}
+
+
+  .list(chapter; list, 'ordered'; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .table(chapter; list, 'ordered'; list, 'unordered'; table) {}
+
+
+  .image(chapter; list, 'ordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(chapter; list, 'ordered'; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .image(chapter; list, 'ordered'; list, 'ordered'; table) {}
+
+
+  .list(chapter; list, 'ordered'; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .table(chapter; list, 'ordered'; list, 'ordered'; table) {}
+
+
+  .table(chapter; list, 'ordered') {}
+
+
+  .list(chapter; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .list(chapter; list, 'ordered'; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .list(chapter; list, 'ordered'; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .image(chapter; list, 'ordered'; table) {}
+
+
+  .list(chapter; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .list(chapter; list, 'ordered'; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(chapter; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .list(chapter; list, 'ordered'; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(chapter; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .table(chapter; list, 'ordered'; table) {}
+
+
+  .list(chapter; list, 'ordered'; table; table; list, 'unordered') {}
+
+
+  .image(chapter; list, 'ordered'; table; table) {}
+
+
+  .list(chapter; list, 'ordered'; table; table; list, 'ordered') {}
+
+
+  .table(chapter; list, 'ordered'; table; table) {}
+
+
+  .table(chapter) {}
+
+
+  .list(chapter; table; list, 'unordered') {}
+
+
+  .list(chapter; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(chapter; table; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(chapter; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(chapter; table; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(chapter; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(chapter; table; list, 'unordered') {}
+
+
+  .list(chapter; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(chapter; table; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(chapter; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(chapter; table; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(chapter; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(chapter; table; list, 'unordered') {}
+
+
+  .list(chapter; table; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .image(chapter; table; list, 'unordered'; table) {}
+
+
+  .list(chapter; table; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .table(chapter; table; list, 'unordered'; table) {}
+
+
+  .image(chapter; table) {}
+
+
+  .list(chapter; table; list, 'ordered') {}
+
+
+  .list(chapter; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(chapter; table; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(chapter; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(chapter; table; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(chapter; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(chapter; table; list, 'ordered') {}
+
+
+  .list(chapter; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(chapter; table; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(chapter; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(chapter; table; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(chapter; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(chapter; table; list, 'ordered') {}
+
+
+  .list(chapter; table; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .image(chapter; table; list, 'ordered'; table) {}
+
+
+  .list(chapter; table; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .table(chapter; table; list, 'ordered'; table) {}
+
+
+  .table(chapter; table) {}
+
+
+  .list(chapter; table; table; list, 'unordered') {}
+
+
+  .list(chapter; table; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(chapter; table; table; list, 'unordered') {}
+
+
+  .list(chapter; table; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(chapter; table; table; list, 'unordered') {}
+
+
+  .image(chapter; table; table) {}
+
+
+  .list(chapter; table; table; list, 'ordered') {}
+
+
+  .list(chapter; table; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(chapter; table; table; list, 'ordered') {}
+
+
+  .list(chapter; table; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(chapter; table; table; list, 'ordered') {}
+
+
+  .table(chapter; table; table) {}
+
+
+  .list(chapter; table; table; table; list, 'unordered') {}
+
+
+  .image(chapter; table; table; table) {}
+
+
+  .list(chapter; table; table; table; list, 'ordered') {}
+
+
+  .table(chapter; table; table; table) {}
+
+
+  .appendix() {}
+
+
+  .list(appendix; list, 'unordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .image(appendix; list, 'unordered'; list, 'unordered'; table) {}
+
+
+  .list(appendix; list, 'unordered'; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .table(appendix; list, 'unordered'; list, 'unordered'; table) {}
+
+
+  .image(appendix; list, 'unordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'unordered'; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .image(appendix; list, 'unordered'; list, 'ordered'; table) {}
+
+
+  .list(appendix; list, 'unordered'; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .table(appendix; list, 'unordered'; list, 'ordered'; table) {}
+
+
+  .table(appendix; list, 'unordered') {}
+
+
+  .list(appendix; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .list(appendix; list, 'unordered'; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .list(appendix; list, 'unordered'; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .image(appendix; list, 'unordered'; table) {}
+
+
+  .list(appendix; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .list(appendix; list, 'unordered'; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .list(appendix; list, 'unordered'; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .table(appendix; list, 'unordered'; table) {}
+
+
+  .list(appendix; list, 'unordered'; table; table; list, 'unordered') {}
+
+
+  .image(appendix; list, 'unordered'; table; table) {}
+
+
+  .list(appendix; list, 'unordered'; table; table; list, 'ordered') {}
+
+
+  .table(appendix; list, 'unordered'; table; table) {}
+
+
+  .image(appendix) {}
+
+
+  .list(appendix; list, 'ordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .image(appendix; list, 'ordered'; list, 'unordered'; table) {}
+
+
+  .list(appendix; list, 'ordered'; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .table(appendix; list, 'ordered'; list, 'unordered'; table) {}
+
+
+  .image(appendix; list, 'ordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(appendix; list, 'ordered'; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .image(appendix; list, 'ordered'; list, 'ordered'; table) {}
+
+
+  .list(appendix; list, 'ordered'; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .table(appendix; list, 'ordered'; list, 'ordered'; table) {}
+
+
+  .table(appendix; list, 'ordered') {}
+
+
+  .list(appendix; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .list(appendix; list, 'ordered'; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .list(appendix; list, 'ordered'; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .image(appendix; list, 'ordered'; table) {}
+
+
+  .list(appendix; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .list(appendix; list, 'ordered'; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(appendix; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .list(appendix; list, 'ordered'; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(appendix; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .table(appendix; list, 'ordered'; table) {}
+
+
+  .list(appendix; list, 'ordered'; table; table; list, 'unordered') {}
+
+
+  .image(appendix; list, 'ordered'; table; table) {}
+
+
+  .list(appendix; list, 'ordered'; table; table; list, 'ordered') {}
+
+
+  .table(appendix; list, 'ordered'; table; table) {}
+
+
+  .table(appendix) {}
+
+
+  .list(appendix; table; list, 'unordered') {}
+
+
+  .list(appendix; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(appendix; table; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(appendix; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(appendix; table; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(appendix; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(appendix; table; list, 'unordered') {}
+
+
+  .list(appendix; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(appendix; table; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(appendix; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(appendix; table; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(appendix; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(appendix; table; list, 'unordered') {}
+
+
+  .list(appendix; table; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .image(appendix; table; list, 'unordered'; table) {}
+
+
+  .list(appendix; table; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .table(appendix; table; list, 'unordered'; table) {}
+
+
+  .image(appendix; table) {}
+
+
+  .list(appendix; table; list, 'ordered') {}
+
+
+  .list(appendix; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(appendix; table; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(appendix; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(appendix; table; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(appendix; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(appendix; table; list, 'ordered') {}
+
+
+  .list(appendix; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(appendix; table; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(appendix; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(appendix; table; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(appendix; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(appendix; table; list, 'ordered') {}
+
+
+  .list(appendix; table; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .image(appendix; table; list, 'ordered'; table) {}
+
+
+  .list(appendix; table; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .table(appendix; table; list, 'ordered'; table) {}
+
+
+  .table(appendix; table) {}
+
+
+  .list(appendix; table; table; list, 'unordered') {}
+
+
+  .list(appendix; table; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(appendix; table; table; list, 'unordered') {}
+
+
+  .list(appendix; table; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(appendix; table; table; list, 'unordered') {}
+
+
+  .image(appendix; table; table) {}
+
+
+  .list(appendix; table; table; list, 'ordered') {}
+
+
+  .list(appendix; table; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(appendix; table; table; list, 'ordered') {}
+
+
+  .list(appendix; table; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(appendix; table; table; list, 'ordered') {}
+
+
+  .table(appendix; table; table) {}
+
+
+  .list(appendix; table; table; table; list, 'unordered') {}
+
+
+  .image(appendix; table; table; table) {}
+
+
+  .list(appendix; table; table; table; list, 'ordered') {}
+
+
+  .table(appendix; table; table; table) {}
+
+
+  .preface() {}
+
+
+  .list(preface; list, 'unordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .image(preface; list, 'unordered'; list, 'unordered'; table) {}
+
+
+  .list(preface; list, 'unordered'; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .table(preface; list, 'unordered'; list, 'unordered'; table) {}
+
+
+  .image(preface; list, 'unordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'unordered'; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .image(preface; list, 'unordered'; list, 'ordered'; table) {}
+
+
+  .list(preface; list, 'unordered'; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .table(preface; list, 'unordered'; list, 'ordered'; table) {}
+
+
+  .table(preface; list, 'unordered') {}
+
+
+  .list(preface; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .list(preface; list, 'unordered'; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .list(preface; list, 'unordered'; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .image(preface; list, 'unordered'; table) {}
+
+
+  .list(preface; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .list(preface; list, 'unordered'; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .list(preface; list, 'unordered'; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .table(preface; list, 'unordered'; table) {}
+
+
+  .list(preface; list, 'unordered'; table; table; list, 'unordered') {}
+
+
+  .image(preface; list, 'unordered'; table; table) {}
+
+
+  .list(preface; list, 'unordered'; table; table; list, 'ordered') {}
+
+
+  .table(preface; list, 'unordered'; table; table) {}
+
+
+  .image(preface) {}
+
+
+  .list(preface; list, 'ordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .image(preface; list, 'ordered'; list, 'unordered'; table) {}
+
+
+  .list(preface; list, 'ordered'; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .table(preface; list, 'ordered'; list, 'unordered'; table) {}
+
+
+  .image(preface; list, 'ordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(preface; list, 'ordered'; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .image(preface; list, 'ordered'; list, 'ordered'; table) {}
+
+
+  .list(preface; list, 'ordered'; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .table(preface; list, 'ordered'; list, 'ordered'; table) {}
+
+
+  .table(preface; list, 'ordered') {}
+
+
+  .list(preface; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .list(preface; list, 'ordered'; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .list(preface; list, 'ordered'; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .image(preface; list, 'ordered'; table) {}
+
+
+  .list(preface; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .list(preface; list, 'ordered'; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(preface; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .list(preface; list, 'ordered'; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(preface; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .table(preface; list, 'ordered'; table) {}
+
+
+  .list(preface; list, 'ordered'; table; table; list, 'unordered') {}
+
+
+  .image(preface; list, 'ordered'; table; table) {}
+
+
+  .list(preface; list, 'ordered'; table; table; list, 'ordered') {}
+
+
+  .table(preface; list, 'ordered'; table; table) {}
+
+
+  .table(preface) {}
+
+
+  .list(preface; table; list, 'unordered') {}
+
+
+  .list(preface; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(preface; table; list, 'unordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(preface; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .list(preface; table; list, 'unordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(preface; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(preface; table; list, 'unordered') {}
+
+
+  .list(preface; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(preface; table; list, 'unordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(preface; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .list(preface; table; list, 'unordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(preface; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(preface; table; list, 'unordered') {}
+
+
+  .list(preface; table; list, 'unordered'; table; list, 'unordered') {}
+
+
+  .image(preface; table; list, 'unordered'; table) {}
+
+
+  .list(preface; table; list, 'unordered'; table; list, 'ordered') {}
+
+
+  .table(preface; table; list, 'unordered'; table) {}
+
+
+  .image(preface; table) {}
+
+
+  .list(preface; table; list, 'ordered') {}
+
+
+  .list(preface; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(preface; table; list, 'ordered'; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(preface; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .list(preface; table; list, 'ordered'; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(preface; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(preface; table; list, 'ordered') {}
+
+
+  .list(preface; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(preface; table; list, 'ordered'; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(preface; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .list(preface; table; list, 'ordered'; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(preface; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(preface; table; list, 'ordered') {}
+
+
+  .list(preface; table; list, 'ordered'; table; list, 'unordered') {}
+
+
+  .image(preface; table; list, 'ordered'; table) {}
+
+
+  .list(preface; table; list, 'ordered'; table; list, 'ordered') {}
+
+
+  .table(preface; table; list, 'ordered'; table) {}
+
+
+  .table(preface; table) {}
+
+
+  .list(preface; table; table; list, 'unordered') {}
+
+
+  .list(preface; table; table; list, 'unordered'; list, 'unordered') {}
+
+
+  .image(preface; table; table; list, 'unordered') {}
+
+
+  .list(preface; table; table; list, 'unordered'; list, 'ordered') {}
+
+
+  .table(preface; table; table; list, 'unordered') {}
+
+
+  .image(preface; table; table) {}
+
+
+  .list(preface; table; table; list, 'ordered') {}
+
+
+  .list(preface; table; table; list, 'ordered'; list, 'unordered') {}
+
+
+  .image(preface; table; table; list, 'ordered') {}
+
+
+  .list(preface; table; table; list, 'ordered'; list, 'ordered') {}
+
+
+  .table(preface; table; table; list, 'ordered') {}
+
+
+  .table(preface; table; table) {}
+
+
+  .list(preface; table; table; table; list, 'unordered') {}
+
+
+  .image(preface; table; table; table) {}
+
+
+  .list(preface; table; table; table; list, 'ordered') {}
+
+
+  .table(preface; table; table; table) {}
+
+.title {}
+
+.toc{}
+
+.list-item(toc; list, "toc-chapter"){}
+
+.list-item(toc; list, "toc-chapter"){}
+
+.list(toc; list, "toc-chapter"){}
+
+.link(toc; li, 'toc-chapter') {}
+
+.list(toc; list, "toc-chapter"; list, "toc-module") {}
+
+.list(toc; list, "toc-chapter"; list, "toc-mdule") {}
+
+.link(toc; list, "toc-chapter"; list, "toc-module") {}
+
+.preface(title){}
+
+.toc-module(toc) {}
+
+.title(chapter){}
+
+.title(module){}
