@@ -1,0 +1,32 @@
+// Set as global variables so other languages can override
+@Preface: "Preface";
+@Chapter: "Chapter";
+@Appendix: "Appendix";
+@Section: "Section ";
+@Figure: "Figure ";
+@Table: "Table ";
+@Example: "Example ";
+@Exercise: "Exercise ";
+@Equation: "Equation ";
+
+@Note: "Note ";
+
+
+
+// For debugging, mark start and end brackets
+@DEBUG_START: ""; //" ["; // "S"tart and "E"nd marking text for debugging
+@DEBUG_END: ""; //"] ";
+
+//skeletons
+[data-type="chapter"] h1{
+  counter-reset: chapter;
+    .title-number{
+    .counters(chapter)
+    }
+}
+
+//slots
+  .counters(chapter)  {
+    counter-increment: chapter; content: counter(chapter);background: orange; display: block; height: 40px; width: 40px;
+  }
+  .x-content-counter(chapter;  @before; @after) { content: @DEBUG_START @before counter(chapter,  decimal) "." @after @DEBUG_END; }

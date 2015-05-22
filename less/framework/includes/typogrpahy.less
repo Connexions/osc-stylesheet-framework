@@ -1,0 +1,58 @@
+// Vertical rythm and font size are defined in this file.
+
+@base-font-size: 16px;
+@base-line-height: 24px;
+@base-margin: 1.5em;
+
+
+@font-family-serif: Georgia;
+@font-family-sans-serif: Verdana;
+
+@base-font-family: @font-family-serif;
+
+.font-family(@serif)
+when (@serif = serif){
+  font-family: @font-family-serif;
+}
+.font-family(@serif)
+when (@serif = sans){
+  font-family: @font-family-sans-serif;
+}
+
+
+
+html {
+  font: @base-font-size/@base-line-height @font-family;
+}
+body {
+  font: 1em/1.5em;
+}
+
+//add bottom margin only. Avoid top margin
+h1,h2,h3,h4,h5,h6,hgroup,
+ul,ol,dd,
+p,figure,
+pre,table,fieldset,hr{
+    margin-bottom:@base-margin;
+}
+
+//this should use the slots instead
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+h3 {
+  font-size: 1.6em;
+}
+
+h4 {
+  font-size: 1.4em;
+}
+
+h2 {
+  font-size: 1.2em;
+}

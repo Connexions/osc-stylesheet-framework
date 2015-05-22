@@ -1,0 +1,597 @@
+
+[data-type="chapter"] {
+  .chapter();
+}
+
+[data-type="chapter"] [data-type="unordered-list"] {
+  .list(chapter; list, 'unordered');
+}
+
+[data-type="chapter"] [data-type="unordered-list"] [data-type="unordered-list"] {
+  .list(chapter; list, 'unordered'; list, 'unordered');
+}
+
+[data-type="chapter"] [data-type="unordered-list"] [data-type="figure"] {
+  .figure(chapter; list, 'unordered');
+}
+
+[data-type="chapter"] [data-type="unordered-list"] [data-type="figure"] h1.title {
+  .title(chapter; list, 'unordered'; figure);
+
+  span.title-label {
+    .label(chapter; list, 'unordered'; figure; title);
+  }
+  span.title-number {
+    .number(chapter; list, 'unordered'; figure; title);
+  }
+  span.title-divider {
+    .divider(chapter; list, 'unordered'; figure; title);
+  }
+  span.title-text {
+    .wording(chapter; list, 'unordered'; figure; title);
+    .wordage(chapter; list, 'unordered'; figure; title);
+  }
+}
+
+
+[data-type="chapter"] [data-type="unordered-list"] [data-type="image"] {
+  .image(chapter; list, 'unordered');
+}
+
+[data-type="chapter"] [data-type="unordered-list"] [data-type="ordered-list"] {
+  .list(chapter; list, 'unordered'; list, 'ordered');
+}
+
+[data-type="chapter"] [data-type="unordered-list"] [data-type="table"] {
+  .table(chapter; list, 'unordered');
+}
+
+[data-type="chapter"] [data-type="figure"] {
+  .figure(chapter);
+}
+
+[data-type="chapter"] [data-type="figure"] h1.title {
+  .title(chapter; figure);
+
+  span.title-label {
+    .label(chapter; figure; title);
+  }
+  span.title-number {
+    .number(chapter; figure; title);
+  }
+  span.title-divider {
+    .divider(chapter; figure; title);
+  }
+  span.title-text {
+    .wording(chapter; figure; title);
+    .wordage(chapter; figure; title);
+  }
+}
+
+
+[data-type="chapter"] [data-type="figure"] [data-type="unordered-list"] {
+  .list(chapter; figure; list, 'unordered');
+}
+
+[data-type="chapter"] [data-type="figure"] [data-type="figure"] {
+  .figure(chapter; figure);
+}
+
+[data-type="chapter"] [data-type="figure"] [data-type="figure"] h1.title {
+  .title(chapter; figure; figure);
+
+  span.title-label {
+    .label(chapter; figure; figure; title);
+  }
+  span.title-number {
+    .number(chapter; figure; figure; title);
+  }
+  span.title-divider {
+    .divider(chapter; figure; figure; title);
+  }
+  span.title-text {
+    .wording(chapter; figure; figure; title);
+    .wordage(chapter; figure; figure; title);
+  }
+}
+
+
+[data-type="chapter"] [data-type="figure"] [data-type="image"] {
+  .image(chapter; figure);
+}
+
+[data-type="chapter"] [data-type="figure"] [data-type="ordered-list"] {
+  .list(chapter; figure; list, 'ordered');
+}
+
+[data-type="chapter"] [data-type="figure"] [data-type="table"] {
+  .table(chapter; figure);
+}
+
+[data-type="chapter"] [data-type="image"] {
+  .image(chapter);
+}
+
+[data-type="chapter"] [data-type="ordered-list"] {
+  .list(chapter; list, 'ordered');
+}
+
+[data-type="chapter"] [data-type="ordered-list"] [data-type="unordered-list"] {
+  .list(chapter; list, 'ordered'; list, 'unordered');
+}
+
+[data-type="chapter"] [data-type="ordered-list"] [data-type="figure"] {
+  .figure(chapter; list, 'ordered');
+}
+
+[data-type="chapter"] [data-type="ordered-list"] [data-type="figure"] h1.title {
+  .title(chapter; list, 'ordered'; figure);
+
+  span.title-label {
+    .label(chapter; list, 'ordered'; figure; title);
+  }
+  span.title-number {
+    .number(chapter; list, 'ordered'; figure; title);
+  }
+  span.title-divider {
+    .divider(chapter; list, 'ordered'; figure; title);
+  }
+  span.title-text {
+    .wording(chapter; list, 'ordered'; figure; title);
+    .wordage(chapter; list, 'ordered'; figure; title);
+  }
+}
+
+
+[data-type="chapter"] [data-type="ordered-list"] [data-type="image"] {
+  .image(chapter; list, 'ordered');
+}
+
+[data-type="chapter"] [data-type="ordered-list"] [data-type="ordered-list"] {
+  .list(chapter; list, 'ordered'; list, 'ordered');
+}
+
+[data-type="chapter"] [data-type="ordered-list"] [data-type="table"] {
+  .table(chapter; list, 'ordered');
+}
+
+[data-type="chapter"] [data-type="table"] {
+  .table(chapter);
+}
+
+[data-type="chapter"] [data-type="table"] [data-type="unordered-list"] {
+  .list(chapter; table; list, 'unordered');
+}
+
+[data-type="chapter"] [data-type="table"] [data-type="figure"] {
+  .figure(chapter; table);
+}
+
+[data-type="chapter"] [data-type="table"] [data-type="figure"] h1.title {
+  .title(chapter; table; figure);
+
+  span.title-label {
+    .label(chapter; table; figure; title);
+  }
+  span.title-number {
+    .number(chapter; table; figure; title);
+  }
+  span.title-divider {
+    .divider(chapter; table; figure; title);
+  }
+  span.title-text {
+    .wording(chapter; table; figure; title);
+    .wordage(chapter; table; figure; title);
+  }
+}
+
+
+[data-type="chapter"] [data-type="table"] [data-type="image"] {
+  .image(chapter; table);
+}
+
+[data-type="chapter"] [data-type="table"] [data-type="ordered-list"] {
+  .list(chapter; table; list, 'ordered');
+}
+
+[data-type="chapter"] [data-type="table"] [data-type="table"] {
+  .table(chapter; table);
+}
+
+[data-type="appendix"] {
+  .appendix();
+}
+
+[data-type="appendix"] [data-type="unordered-list"] {
+  .list(appendix; list, 'unordered');
+}
+
+[data-type="appendix"] [data-type="unordered-list"] [data-type="unordered-list"] {
+  .list(appendix; list, 'unordered'; list, 'unordered');
+}
+
+[data-type="appendix"] [data-type="unordered-list"] [data-type="figure"] {
+  .figure(appendix; list, 'unordered');
+}
+
+[data-type="appendix"] [data-type="unordered-list"] [data-type="figure"] h1.title {
+  .title(appendix; list, 'unordered'; figure);
+
+  span.title-label {
+    .label(appendix; list, 'unordered'; figure; title);
+  }
+  span.title-number {
+    .number(appendix; list, 'unordered'; figure; title);
+  }
+  span.title-divider {
+    .divider(appendix; list, 'unordered'; figure; title);
+  }
+  span.title-text {
+    .wording(appendix; list, 'unordered'; figure; title);
+    .wordage(appendix; list, 'unordered'; figure; title);
+  }
+}
+
+
+[data-type="appendix"] [data-type="unordered-list"] [data-type="image"] {
+  .image(appendix; list, 'unordered');
+}
+
+[data-type="appendix"] [data-type="unordered-list"] [data-type="ordered-list"] {
+  .list(appendix; list, 'unordered'; list, 'ordered');
+}
+
+[data-type="appendix"] [data-type="unordered-list"] [data-type="table"] {
+  .table(appendix; list, 'unordered');
+}
+
+[data-type="appendix"] [data-type="figure"] {
+  .figure(appendix);
+}
+
+[data-type="appendix"] [data-type="figure"] h1.title {
+  .title(appendix; figure);
+
+  span.title-label {
+    .label(appendix; figure; title);
+  }
+  span.title-number {
+    .number(appendix; figure; title);
+  }
+  span.title-divider {
+    .divider(appendix; figure; title);
+  }
+  span.title-text {
+    .wording(appendix; figure; title);
+    .wordage(appendix; figure; title);
+  }
+}
+
+
+[data-type="appendix"] [data-type="figure"] [data-type="unordered-list"] {
+  .list(appendix; figure; list, 'unordered');
+}
+
+[data-type="appendix"] [data-type="figure"] [data-type="figure"] {
+  .figure(appendix; figure);
+}
+
+[data-type="appendix"] [data-type="figure"] [data-type="figure"] h1.title {
+  .title(appendix; figure; figure);
+
+  span.title-label {
+    .label(appendix; figure; figure; title);
+  }
+  span.title-number {
+    .number(appendix; figure; figure; title);
+  }
+  span.title-divider {
+    .divider(appendix; figure; figure; title);
+  }
+  span.title-text {
+    .wording(appendix; figure; figure; title);
+    .wordage(appendix; figure; figure; title);
+  }
+}
+
+
+[data-type="appendix"] [data-type="figure"] [data-type="image"] {
+  .image(appendix; figure);
+}
+
+[data-type="appendix"] [data-type="figure"] [data-type="ordered-list"] {
+  .list(appendix; figure; list, 'ordered');
+}
+
+[data-type="appendix"] [data-type="figure"] [data-type="table"] {
+  .table(appendix; figure);
+}
+
+[data-type="appendix"] [data-type="image"] {
+  .image(appendix);
+}
+
+[data-type="appendix"] [data-type="ordered-list"] {
+  .list(appendix; list, 'ordered');
+}
+
+[data-type="appendix"] [data-type="ordered-list"] [data-type="unordered-list"] {
+  .list(appendix; list, 'ordered'; list, 'unordered');
+}
+
+[data-type="appendix"] [data-type="ordered-list"] [data-type="figure"] {
+  .figure(appendix; list, 'ordered');
+}
+
+[data-type="appendix"] [data-type="ordered-list"] [data-type="figure"] h1.title {
+  .title(appendix; list, 'ordered'; figure);
+
+  span.title-label {
+    .label(appendix; list, 'ordered'; figure; title);
+  }
+  span.title-number {
+    .number(appendix; list, 'ordered'; figure; title);
+  }
+  span.title-divider {
+    .divider(appendix; list, 'ordered'; figure; title);
+  }
+  span.title-text {
+    .wording(appendix; list, 'ordered'; figure; title);
+    .wordage(appendix; list, 'ordered'; figure; title);
+  }
+}
+
+
+[data-type="appendix"] [data-type="ordered-list"] [data-type="image"] {
+  .image(appendix; list, 'ordered');
+}
+
+[data-type="appendix"] [data-type="ordered-list"] [data-type="ordered-list"] {
+  .list(appendix; list, 'ordered'; list, 'ordered');
+}
+
+[data-type="appendix"] [data-type="ordered-list"] [data-type="table"] {
+  .table(appendix; list, 'ordered');
+}
+
+[data-type="appendix"] [data-type="table"] {
+  .table(appendix);
+}
+
+[data-type="appendix"] [data-type="table"] [data-type="unordered-list"] {
+  .list(appendix; table; list, 'unordered');
+}
+
+[data-type="appendix"] [data-type="table"] [data-type="figure"] {
+  .figure(appendix; table);
+}
+
+[data-type="appendix"] [data-type="table"] [data-type="figure"] h1.title {
+  .title(appendix; table; figure);
+
+  span.title-label {
+    .label(appendix; table; figure; title);
+  }
+  span.title-number {
+    .number(appendix; table; figure; title);
+  }
+  span.title-divider {
+    .divider(appendix; table; figure; title);
+  }
+  span.title-text {
+    .wording(appendix; table; figure; title);
+    .wordage(appendix; table; figure; title);
+  }
+}
+
+
+[data-type="appendix"] [data-type="table"] [data-type="image"] {
+  .image(appendix; table);
+}
+
+[data-type="appendix"] [data-type="table"] [data-type="ordered-list"] {
+  .list(appendix; table; list, 'ordered');
+}
+
+[data-type="appendix"] [data-type="table"] [data-type="table"] {
+  .table(appendix; table);
+}
+
+[data-type="preface"] {
+  .preface();
+}
+
+[data-type="preface"] [data-type="unordered-list"] {
+  .list(preface; list, 'unordered');
+}
+
+[data-type="preface"] [data-type="unordered-list"] [data-type="unordered-list"] {
+  .list(preface; list, 'unordered'; list, 'unordered');
+}
+
+[data-type="preface"] [data-type="unordered-list"] [data-type="figure"] {
+  .figure(preface; list, 'unordered');
+}
+
+[data-type="preface"] [data-type="unordered-list"] [data-type="figure"] h1.title {
+  .title(preface; list, 'unordered'; figure);
+
+  span.title-label {
+    .label(preface; list, 'unordered'; figure; title);
+  }
+  span.title-number {
+    .number(preface; list, 'unordered'; figure; title);
+  }
+  span.title-divider {
+    .divider(preface; list, 'unordered'; figure; title);
+  }
+  span.title-text {
+    .wording(preface; list, 'unordered'; figure; title);
+    .wordage(preface; list, 'unordered'; figure; title);
+  }
+}
+
+
+[data-type="preface"] [data-type="unordered-list"] [data-type="image"] {
+  .image(preface; list, 'unordered');
+}
+
+[data-type="preface"] [data-type="unordered-list"] [data-type="ordered-list"] {
+  .list(preface; list, 'unordered'; list, 'ordered');
+}
+
+[data-type="preface"] [data-type="unordered-list"] [data-type="table"] {
+  .table(preface; list, 'unordered');
+}
+
+[data-type="preface"] [data-type="figure"] {
+  .figure(preface);
+}
+
+[data-type="preface"] [data-type="figure"] h1.title {
+  .title(preface; figure);
+
+  span.title-label {
+    .label(preface; figure; title);
+  }
+  span.title-number {
+    .number(preface; figure; title);
+  }
+  span.title-divider {
+    .divider(preface; figure; title);
+  }
+  span.title-text {
+    .wording(preface; figure; title);
+    .wordage(preface; figure; title);
+  }
+}
+
+
+[data-type="preface"] [data-type="figure"] [data-type="unordered-list"] {
+  .list(preface; figure; list, 'unordered');
+}
+
+[data-type="preface"] [data-type="figure"] [data-type="figure"] {
+  .figure(preface; figure);
+}
+
+[data-type="preface"] [data-type="figure"] [data-type="figure"] h1.title {
+  .title(preface; figure; figure);
+
+  span.title-label {
+    .label(preface; figure; figure; title);
+  }
+  span.title-number {
+    .number(preface; figure; figure; title);
+  }
+  span.title-divider {
+    .divider(preface; figure; figure; title);
+  }
+  span.title-text {
+    .wording(preface; figure; figure; title);
+    .wordage(preface; figure; figure; title);
+  }
+}
+
+
+[data-type="preface"] [data-type="figure"] [data-type="image"] {
+  .image(preface; figure);
+}
+
+[data-type="preface"] [data-type="figure"] [data-type="ordered-list"] {
+  .list(preface; figure; list, 'ordered');
+}
+
+[data-type="preface"] [data-type="figure"] [data-type="table"] {
+  .table(preface; figure);
+}
+
+[data-type="preface"] [data-type="image"] {
+  .image(preface);
+}
+
+[data-type="preface"] [data-type="ordered-list"] {
+  .list(preface; list, 'ordered');
+}
+
+[data-type="preface"] [data-type="ordered-list"] [data-type="unordered-list"] {
+  .list(preface; list, 'ordered'; list, 'unordered');
+}
+
+[data-type="preface"] [data-type="ordered-list"] [data-type="figure"] {
+  .figure(preface; list, 'ordered');
+}
+
+[data-type="preface"] [data-type="ordered-list"] [data-type="figure"] h1.title {
+  .title(preface; list, 'ordered'; figure);
+
+  span.title-label {
+    .label(preface; list, 'ordered'; figure; title);
+  }
+  span.title-number {
+    .number(preface; list, 'ordered'; figure; title);
+  }
+  span.title-divider {
+    .divider(preface; list, 'ordered'; figure; title);
+  }
+  span.title-text {
+    .wording(preface; list, 'ordered'; figure; title);
+    .wordage(preface; list, 'ordered'; figure; title);
+  }
+}
+
+
+[data-type="preface"] [data-type="ordered-list"] [data-type="image"] {
+  .image(preface; list, 'ordered');
+}
+
+[data-type="preface"] [data-type="ordered-list"] [data-type="ordered-list"] {
+  .list(preface; list, 'ordered'; list, 'ordered');
+}
+
+[data-type="preface"] [data-type="ordered-list"] [data-type="table"] {
+  .table(preface; list, 'ordered');
+}
+
+[data-type="preface"] [data-type="table"] {
+  .table(preface);
+}
+
+[data-type="preface"] [data-type="table"] [data-type="unordered-list"] {
+  .list(preface; table; list, 'unordered');
+}
+
+[data-type="preface"] [data-type="table"] [data-type="figure"] {
+  .figure(preface; table);
+}
+
+[data-type="preface"] [data-type="table"] [data-type="figure"] h1.title {
+  .title(preface; table; figure);
+
+  span.title-label {
+    .label(preface; table; figure; title);
+  }
+  span.title-number {
+    .number(preface; table; figure; title);
+  }
+  span.title-divider {
+    .divider(preface; table; figure; title);
+  }
+  span.title-text {
+    .wording(preface; table; figure; title);
+    .wordage(preface; table; figure; title);
+  }
+}
+
+
+[data-type="preface"] [data-type="table"] [data-type="image"] {
+  .image(preface; table);
+}
+
+[data-type="preface"] [data-type="table"] [data-type="ordered-list"] {
+  .list(preface; table; list, 'ordered');
+}
+
+[data-type="preface"] [data-type="table"] [data-type="table"] {
+  .table(preface; table);
+}

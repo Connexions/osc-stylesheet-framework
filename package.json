@@ -1,0 +1,18 @@
+{
+  "name": "osc-stylesheets",
+  "version": "0.1.0",
+  "devDependencies": {
+    "coffee-script": "^1.9.2",
+    "gulp": "*",
+    "gulp-changed": "^1.2.1",
+    "gulp-filter": "^2.0.2",
+    "gulp-ignore": "^1.2.1",
+    "gulp-less-reporter": "^0.0.2",
+    "gulp-livereload": "^3.8.0",
+    "gulp-newer": "^0.5.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-run": "^1.6.7",
+    "gulp-subtask": "^0.3.1",
+    "gulp-watch": "^4.2.4"
+  }
+}
