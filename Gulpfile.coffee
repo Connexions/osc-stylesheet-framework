@@ -9,15 +9,11 @@ less = require 'gulp-less'
 changed = require 'gulp-changed'
 lessDependents = require 'gulp-less-dependents'
 gulpFilter = require 'gulp-filter'
-subTask = require 'gulp-subtask'
 
 destDir = './scripts/skeleton_generator/'
 skeletonFile = '../skeleton.less'
 slotsFile = 'slots.less'
-themePath = 'css/themes/'
-bookPath='css/books/'
-themeNames = ['generic', 'hsphysics']
-bookNames = ['prototype', 'hsphysics']
+
 
 gulp.task 'generate-skeletons', ->
   run('python main.py', {cwd: destDir, silent: true}).exec()
@@ -29,19 +25,9 @@ gulp.task 'generate-slots', ['generate-skeletons'], ->
   .pipe(rename(slotsFile))
   .pipe(gulp.dest(destDir))
 
-gulp.task 'foundation', ['generate-slots']
-
-
-gulp.task = new SubTask('task') ->
-  .src('less/themes/**/main.less')
-  .pipe(changed('css/books/', {extension: '.css'}))
-  .pipe(gulp.dest('css/books/'))
-  .on('error', reporter)
-  .pipe(print())
-
 gulp.task 'books', ->
   gulp.src(['less/books/**/*.less', '!less/books/**/variables.less'])
-    .pipe(changed('css/books/', {extension: '.css'})) //dont use this and generate all templates. Use this and generate books only, doesn't work if modifying themes
+    #.pipe(changed('css/books/', {extension: '.css'}))
     .pipe(less())
     .pipe(gulp.dest('css/books/'))
     .on('error', reporter)

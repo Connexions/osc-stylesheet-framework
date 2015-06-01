@@ -18,11 +18,10 @@
 
 //Defines every theme specific slots value. Calls only required slots from the framework
 
-body{background: blue}
 .title(){
 }
 
-
+/* Table of contents */
 .link(toc; li, 'toc-chapter'){
   color: @fushcia;
   font-weight: 600;
@@ -34,10 +33,51 @@ body{background: blue}
 }
 
 .list(toc; list, "toc-chapter"; list, "toc-module"){
-  color: orange;
+  margin-left: 20px;
+}
+.label(toc; li, 'toc-chapter'; link) {
+   display: inline-block;
+  content: "chapter";
+}
+
+.number(toc; li, 'toc-chapter'; link) {
+   display: inline-block;
+   content: "1";
+}
+
+.divider(toc; li, 'toc-chapter'; link) {
+  content: " | ";
+}
+
+.wording(toc; li, 'toc-chapter'; link) {
+   display: inline-block;
+}
+
+.link(toc; li, 'toc-chapter'; li, 'toc-module'){
+  color: black;
+}
+
+.label(toc; li, 'toc-chapter'; link; li, 'toc-module') {
+  display: inline-block;
+  content: "module";
+}
+
+.number(toc; li, 'toc-chapter'; link; li, 'toc-module') {
+   display: inline-block;
+  content: "1";
+}
+
+.divider(toc; li, 'toc-chapter'; link; li, 'toc-module') {
+  display: inline-block;
+  content: "| ";
+}
+
+.wording(toc; li, 'toc-chapter'; link; li, 'toc-module') {
+  display: inline-block;
 }
 
 
+/* Chapter */
 .title(chapter){
   background: @fushcia;
 }

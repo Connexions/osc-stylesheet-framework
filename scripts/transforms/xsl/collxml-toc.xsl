@@ -17,9 +17,24 @@
 
   <xsl:template match="/html/body/div[@class='front-matter']/nav[@class='contents']">
     <nav class="contents">
+      <xsl:variable name="toc-class" >
+      <xsl:choose>
+        <xsl:when test="/html/body/div[@class='body-matter']/section[@data-type='unit']">
+          <xsl:value-of select="'toc-unit'" />
+        </xsl:when>
+        <xsl:when test="/html/body/div[@class='body-matter']/section[@data-type='chapter']">
+          <xsl:value-of select="'toc-chapter'" />
+        </xsl:when>
+          <xsl:otherwise>
+          <xsl:value-of select="'toc-module'" />
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <ul class="{$toc-class}">
       <xsl:for-each select="/html/body/div[@class='body-matter']/section">
-        <xsl:call-template name="toc-section" />
+       <li> <xsl:call-template name="toc-section" /></li>
       </xsl:for-each>
+    </ul>
     </nav>
   </xsl:template>
 
@@ -40,8 +55,13 @@
 
   <!-- For units keep parsing any sections (chapters or modules) below it. -->
   <xsl:template name="toc-unit">
-    <a href="#{@id}" class="toc-unit"><xsl:value-of select="./h1" /></a>
-    <ul class="toc-unit">
+    <a href="#{@id}" class="toc-unit">
+      <span class="label"><xsl:text> </xsl:text></span>
+      <span class="number"><xsl:text> </xsl:text></span>
+      <span class="divider"><xsl:text> </xsl:text></span>
+      <span class="wording"><xsl:value-of select="./h1" /></span>
+      </a>
+    <ul class="toc-chapter">
       <xsl:for-each select="./section">
         <li>
           <xsl:call-template name="toc-section" />
@@ -52,8 +72,13 @@
 
   <!-- For chapters keep parsing any sections (modules) below it. -->
   <xsl:template name="toc-chapter">
-    <a href="#{@id}" class="toc-chapter"><xsl:value-of select="./h1" /></a>
-    <ul class="toc-chapter">
+  <a href="#{@id}" class="toc-chapter">
+    <span class="label"><xsl:text> </xsl:text></span>
+    <span class="number"><xsl:text> </xsl:text></span>
+    <span class="divider"><xsl:text> </xsl:text></span>
+     <span class="wording"><xsl:value-of select="./h1" /></span>
+  </a>
+    <ul class="toc-module">
       <xsl:for-each select="./section">
         <li>
           <xsl:call-template name="toc-section" />
@@ -77,9 +102,13 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <a href="#{@id}" class="{$toc-class}"><xsl:value-of select="./h1/span[@class='title-text']" /></a>
+    <a href="#{@id}" class="{$toc-class}">
+      <span class="label"><xsl:text> </xsl:text></span>
+      <span class="number"><xsl:text> </xsl:text></span>
+      <span class="divider"><xsl:text> </xsl:text></span>
+      <span class="wording"><xsl:value-of select="./h1/span[@class='title-text']" /></span>
+    </a>
   </xsl:template>
-
   <!-- It's Tricky...it's Tricky (Tricky) Tricky (Tricky) -->
   <xsl:template match="node()|@*">
     <xsl:copy>

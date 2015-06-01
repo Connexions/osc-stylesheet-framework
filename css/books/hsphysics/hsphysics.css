@@ -183,14 +183,9 @@ h2 {
 [data-type="chapter"] h1 .title-number {
   counter-increment: chapter;
   content: counter(chapter);
-  background: orange;
-  display: block;
-  height: 40px;
-  width: 40px;
 }
-body {
-  background: blue;
-}
+/* Table of contents */
+/* Chapter */
 .contents ul.toc-chapter {
   margin-left: 20px;
   color: black;
@@ -199,12 +194,41 @@ body {
   color: #be3c82;
   font-weight: 600;
 }
+.contents ul.toc-chapter li a.toc-chapter .label {
+  display: inline-block;
+  content: "chapter";
+}
+.contents ul.toc-chapter li a.toc-chapter .number {
+  display: inline-block;
+  content: "1";
+}
+.contents ul.toc-chapter li a.toc-chapter .divider {
+  content: " | ";
+}
+.contents ul.toc-chapter li a.toc-chapter .wording {
+  display: inline-block;
+}
+.contents ul.toc-chapter li a.toc-module {
+  color: black;
+}
+.contents ul.toc-chapter li a.toc-module .label {
+  display: inline-block;
+  content: "module";
+}
+.contents ul.toc-chapter li a.toc-module .number {
+  display: inline-block;
+  content: "1";
+}
+.contents ul.toc-chapter li a.toc-module .divider {
+  display: inline-block;
+  content: "| ";
+}
+.contents ul.toc-chapter li a.toc-module .wording {
+  display: inline-block;
+}
 .contents ul.toc-chapter ul.toc-module {
-  color: orange;
+  margin-left: 20px;
 }
 .body-matter [data-type="chapter"] > h1 {
   background: #be3c82;
-}
-body {
-  background: orange;
 }
