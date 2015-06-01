@@ -183,6 +183,10 @@ h2 {
 [data-type="chapter"] h1 .title-number {
   counter-increment: chapter;
   content: counter(chapter);
+  background: orange;
+  display: block;
+  height: 40px;
+  width: 40px;
 }
 /* Table of contents */
 /* Chapter */
