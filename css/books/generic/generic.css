@@ -1,0 +1,101 @@
+@page {
+}
+@page :left {
+  @top-left-corner {
+  }
+  @top-right-corner {
+  }
+  @bottom-left-corner {
+  }
+  @bottom-right-corner {
+  }
+  @top-left {
+  }
+  @top-center {
+  }
+  @top-right {
+  }
+  @bottom-left {
+  }
+  @bottom-center {
+  }
+  @bottom-right {
+  }
+  @left-top {
+  }
+  @left-middle {
+  }
+  @left-bottom {
+  }
+  @right-top {
+  }
+  @right-middle {
+  }
+  @right-bottom {
+  }
+}
+@page :right {
+  @top-left-corner {
+  }
+  @top-right-corner {
+  }
+  @bottom-left-corner {
+  }
+  @bottom-right-corner {
+  }
+  @top-left {
+  }
+  @top-center {
+  }
+  @top-right {
+  }
+  @bottom-left {
+  }
+  @bottom-center {
+  }
+  @bottom-right {
+  }
+  @left-top {
+  }
+  @left-middle {
+  }
+  @left-bottom {
+  }
+  @right-top {
+  }
+  @right-middle {
+  }
+  @right-bottom {
+  }
+}
+@page table-of-contents {
+  @top-left-corner {
+  }
+  @top-left {
+  }
+  @top-right-corner {
+  }
+  @top-right {
+  }
+}
+@page preface :blank {
+  @top-left {
+    content: none;
+  }
+}
+@page preface:right {
+  @top-right {
+  }
+}
+@page preface:left {
+  @top-right {
+  }
+}
+@page preface:left {
+  @top-left {
+  }
+}
+@page preface:right {
+  @top-left {
+  }
+}

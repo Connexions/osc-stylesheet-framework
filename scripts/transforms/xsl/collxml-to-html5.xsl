@@ -88,7 +88,7 @@
   </xsl:template>
 
   <xsl:template match="col:module">
-    <section data-type="module" id="{generate-id(.)}">
+    <section data-type="module" id="{generate-id(.)}" class="">
       <xsl:apply-templates select="node()"/>
       <xsl:call-template name="cnx.xinclude.module"/>
     </section>

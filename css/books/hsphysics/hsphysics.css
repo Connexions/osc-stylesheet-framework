@@ -177,19 +177,126 @@ h4 {
 h2 {
   font-size: 1.2em;
 }
-[data-type="chapter"] h1 {
+[data-type="chapter"] {
   counter-reset: chapter;
 }
-[data-type="chapter"] h1 .title-number {
+[data-type="chapter"] .title-number:before {
   counter-increment: chapter;
   content: counter(chapter);
-  background: orange;
-  display: block;
-  height: 40px;
-  width: 40px;
+}
+[data-type="module"] {
+  counter-reset: module;
+}
+[data-type="module"] .title-number:before {
+  counter-increment: module;
+  content: counter(chapter) "." counter(module);
+}
+.introduction .title-number:before {
+  display: none;
 }
 /* Table of contents */
 /* Chapter */
+@page {
+}
+@page :left {
+  @top-left-corner {
+  }
+  @top-right-corner {
+  }
+  @bottom-left-corner {
+  }
+  @bottom-right-corner {
+  }
+  @top-left {
+  }
+  @top-center {
+  }
+  @top-right {
+  }
+  @bottom-left {
+  }
+  @bottom-center {
+  }
+  @bottom-right {
+  }
+  @left-top {
+  }
+  @left-middle {
+  }
+  @left-bottom {
+  }
+  @right-top {
+  }
+  @right-middle {
+  }
+  @right-bottom {
+  }
+}
+@page :right {
+  @top-left-corner {
+  }
+  @top-right-corner {
+  }
+  @bottom-left-corner {
+  }
+  @bottom-right-corner {
+  }
+  @top-left {
+  }
+  @top-center {
+  }
+  @top-right {
+  }
+  @bottom-left {
+  }
+  @bottom-center {
+  }
+  @bottom-right {
+  }
+  @left-top {
+  }
+  @left-middle {
+  }
+  @left-bottom {
+  }
+  @right-top {
+  }
+  @right-middle {
+  }
+  @right-bottom {
+  }
+}
+@page table-of-contents {
+  @top-left-corner {
+  }
+  @top-left {
+  }
+  @top-right-corner {
+  }
+  @top-right {
+  }
+}
+@page preface :blank {
+  @top-left {
+    content: none;
+  }
+}
+@page preface:right {
+  @top-right {
+  }
+}
+@page preface:left {
+  @top-right {
+  }
+}
+@page preface:left {
+  @top-left {
+  }
+}
+@page preface:right {
+  @top-left {
+  }
+}
 .contents ul.toc-chapter {
   margin-left: 20px;
   color: black;

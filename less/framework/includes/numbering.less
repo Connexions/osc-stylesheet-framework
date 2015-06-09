@@ -18,15 +18,28 @@
 @DEBUG_END: ""; //"] ";
 
 //skeletons
-[data-type="chapter"] h1{
+[data-type="chapter"] {
   counter-reset: chapter;
-    .title-number{
+    .title-number:before{
     .counters(chapter)
     }
+}
+[data-type="module"]  {
+    counter-reset: module;
+    .title-number:before{
+    .counters(module)
+    }
+}
+
+.introduction .title-number:before {
+  display: none;
 }
 
 //slots
   .counters(chapter)  {
-    counter-increment: chapter; content: counter(chapter);background: orange; display: block; height: 40px; width: 40px;
+    counter-increment: chapter; content: counter(chapter);
+  }
+    .counters(module)  {
+    counter-increment: module; content: counter(chapter) "." counter(module);
   }
   .x-content-counter(chapter;  @before; @after) { content: @DEBUG_START @before counter(chapter,  decimal) "." @after @DEBUG_END; }
