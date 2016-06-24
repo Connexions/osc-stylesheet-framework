@@ -1,0 +1,14 @@
+if application "Adobe Acrobat Pro" is running then
+	tell application "Adobe Acrobat Pro" to quit
+end if
+tell application "iTerm"
+	tell the current terminal
+		activate current session
+		launch session "Helene"
+		tell the last session
+			write text "python /Users/helene/openstax/oer.exports/collectiondbk2pdf.py /Users/helene/openstax/prototype-math/data/math/ /Users/helene/openstax/prototype-math/output/math/collection.html --no-tidy"
+			write text "sed -ir 's|</head>|<link rel=\"stylesheet\" type=\"text/css\" href=\"../../css/books/math/math.css\" /></head>|' /Users/helene/openstax/prototype-math/output/math/collection.html"
+
+		end tell
+	end tell
+end tell

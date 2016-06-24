@@ -343,3 +343,6 @@ h2 {
 .body-matter [data-type="chapter"] > h1 {
   background: #be3c82;
 }
+[data-type="appendix"] .title {
+  background: blue;
+}
